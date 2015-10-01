@@ -12,22 +12,23 @@ reqAnimFrame(update);       //60 fps up in this
 /*======== PLAYERS ===========*/
 
 var player1 = {
-    x : 100,
-    y : 100,
-    r : 50,
-    sAngle : 0,
-    eAngle : 2*Math.PI,
+
+    x : 0,
+    y : 0,
+    width : 50,
+    height : 50,
     color: "blue",
-    hej : 75
+    picked: false
 };
 
 var player2 = {
-    x : 200,
-    y : 200,
-    r : 50,
-    sAngle : 0,
-    eAngle : 2*Math.PI,
-    color: "red"
+    x: 100,
+    y: 100,
+    width: 50,
+    height: 50,
+    color: "red",
+    picked: false
+
 };
 
 
@@ -52,32 +53,30 @@ function update(){          //Draws/animates the canvas
         console.log("HEJSAN!");
     }
 
-    reqAnimFrame(update);
+
+	reqAnimFrame(update);
 }
-
-
-
 
 
 /*======== CONTROLS ETC ========*/
 window.addEventListener("keydown", function(e){         //controls
 
-    if(e.keyCode == 37){
-        //vänster
-        player1.x -= 5;
-    }
-    if(e.keyCode == 38){
-        //upp
-        player1.y -= 5;
-    }
-    if(e.keyCode == 39){
-        //höger
-        player1.x += 5;
-    }
-    if(e.keyCode == 40){
-        //ner
-        player1.y += 5;
-    }
+	if(e.keyCode == 37){
+		//vänster
+		if (player1.x > 0) player1.x -= 5;
+	}
+	if(e.keyCode == 38){
+		//upp
+		if (player1.y > 0) player1.y -= 5;
+	}
+	if(e.keyCode == 39){
+		//höger
+		if (player1.x < 550) player1.x += 5;
+	}
+	if(e.keyCode == 40){
+		//ner
+		if (player1.y < 550) player1.y += 5;
+	}
 });
 
 
